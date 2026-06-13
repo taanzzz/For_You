@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="description" content="A special message just for you.">
+	<meta name="theme-color" content="#0a0a1a">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<title>For You</title>
+	<link rel="icon" href="favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+	<!-- ══════════ PRELOADER ══════════ -->
+	<div class="preloader" id="preloader">
+		<div class="preloader__content">
+			<div class="preloader__spinner"></div>
+			<p class="preloader__text">Just a moment...</p>
+			<div class="preloader__progress">
+				<div class="preloader__bar"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ══════════ CANVAS PARTICLES ══════════ -->
+	<canvas id="particles-canvas"></canvas>
+
+	<!-- ══════════ FLOATING MUSIC CONTROL ══════════ -->
+	<button class="music-toggle" id="musicToggle" aria-label="Toggle Music">
+		<span class="music-icon music-icon--off" id="musicIconOff">
+			<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<path d="M11 5L6 9H2v6h4l5 4V5z" />
+				<line x1="23" y1="9" x2="17" y2="15" />
+				<line x1="17" y1="9" x2="23" y2="15" />
+			</svg>
+		</span>
+		<span class="music-icon music-icon--on" id="musicIconOn" style="display:none;">
+			<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<path d="M11 5L6 9H2v6h4l5 4V5z" />
+				<path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
+			</svg>
+		</span>
+	</button>
+	<audio id="bgMusic" loop preload="auto">
+		<source src="hbd.mp3" type="audio/mpeg">
+	</audio>
+
+	<!-- ══════════ ENTRANCE SCREEN ══════════ -->
+	<section class="screen screen--entrance" id="entranceScreen">
+		<div class="entrance__sparkles">
+			<div class="sparkle sparkle--1"></div>
+			<div class="sparkle sparkle--2"></div>
+			<div class="sparkle sparkle--3"></div>
+			<div class="sparkle sparkle--4"></div>
+			<div class="sparkle sparkle--5"></div>
+			<div class="sparkle sparkle--6"></div>
+		</div>
+		<div class="entrance__content">
+			<div class="entrance__icon">✨</div>
+			<h1 class="entrance__title">
+				<span class="entrance__title-line">Nanjiba,</span>
+				<span class="entrance__title-line entrance__title-line--accent">I have a confession...</span>
+			</h1>
+			<p class="entrance__subtitle">I know what you've been thinking today.</p>
+			<button class="btn-magic" id="openGiftBtn">
+				<span class="btn-magic__text">Hear me out</span>
+				<span class="btn-magic__shimmer"></span>
+			</button>
+		</div>
+	</section>
+
+	<!-- ══════════ MAIN JOURNEY ══════════ -->
+	<main class="journey" id="journey" style="display:none;">
+
+		<!-- Floating Decorative Balloons -->
+		<div class="bg-decorations">
+			<img src="b1.png" class="floating-balloon fb-1" alt="">
+			<img src="b2.png" class="floating-balloon fb-2" alt="">
+			<img src="b3.png" class="floating-balloon fb-3" alt="">
+			<img src="b4.png" class="floating-balloon fb-4" alt="">
+			<img src="b5.png" class="floating-balloon fb-5" alt="">
+			<img src="b6.png" class="floating-balloon fb-6" alt="">
+			<img src="b7.png" class="floating-balloon fb-7" alt="">
+		</div>
+
+		<!-- Flying Butterflies -->
+		<div class="butterflies-container">
+			<div class="butterfly bf-1">🦋</div>
+			<div class="butterfly bf-2">🦋</div>
+			<div class="butterfly bf-3">🦋</div>
+			<div class="butterfly bf-4">🦋</div>
+			<div class="butterfly bf-5">🦋</div>
+		</div>
+
+		<!-- Scroll Indicator -->
+		<div class="scroll-arrow" id="scrollArrow">
+			<span>Scroll down</span>
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<path d="M6 9l6 6 6-6" />
+			</svg>
+		</div>
+
+		<!-- Section 1: The Opening -->
+		<section class="scene scene--opening" id="sceneOpening">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__whisper">You probably thought...</p>
+				</div>
+				<div class="reveal-text" data-delay="600">
+					<p class="scene__statement">that I completely forgot</p>
+				</div>
+				<div class="reveal-text" data-delay="1200">
+					<p class="scene__whisper">about today.</p>
+				</div>
+				<div class="reveal-text" data-delay="1800">
+					<p class="scene__statement">And honestly...<br><em>I almost let you believe that.</em></p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 2: The Pivot -->
+		<section class="scene scene--pivot" id="scenePivot">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__accent">But...</p>
+				</div>
+
+				<div class="divider-glow"></div>
+
+				<div class="reveal-text" data-delay="400">
+					<p class="scene__whisper">How could I ever forget?</p>
+				</div>
+
+				<div class="reveal-text" data-delay="800">
+					<p class="scene__highlight">
+						Today isn’t just a date on the calendar…
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="1200">
+					<p class="scene__highlight">
+						It’s the day someone came into this world who, without even realizing it, ended up meaning more
+						than they’ll ever understand.
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="1600">
+					<p class="scene__highlight">
+						Maybe the world didn’t change… but for someone, everything quietly did.
+					</p>
+				</div>
+			</div>
+		</section>
+		<!-- Section 3: The Celebration Build -->
+		<section class="scene scene--celebrate" id="sceneCelebrate">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__whisper">So I wanted to do</p>
+				</div>
+				<div class="reveal-text" data-delay="500">
+					<p class="scene__statement">something a little special...</p>
+				</div>
+				<div class="reveal-text" data-delay="1000">
+					<p class="scene__grand">Just for you ✨</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 4: The Personal Touch -->
+		<section class="scene scene--personal" id="scenePersonal">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__whisper">Nanjiba,</p>
+				</div>
+				<div class="reveal-text" data-delay="500">
+					<p class="scene__statement">you’ve always carried your own world with quiet strength</p>
+				</div>
+				<div class="divider-stars">✦ ✦ ✦</div>
+				<div class="reveal-text" data-delay="1000">
+					<p class="scene__whisper">I just wanted to create something</p>
+				</div>
+				<div class="reveal-text" data-delay="1500">
+					<p class="scene__highlight">small… but meaningful</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 5: Gratitude -->
+		<section class="scene scene--gratitude" id="sceneGratitude">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__statement">Thank you for the moments we shared.</p>
+				</div>
+				<div class="reveal-text" data-delay="500">
+					<p class="scene__statement">They meant more than they ever looked like 💛</p>
+				</div>
+				<div class="divider-glow"></div>
+				<div class="reveal-text" data-delay="1000">
+					<p class="scene__grand">I genuinely wish you well.</p>
+				</div>
+				<div class="reveal-text" data-delay="1500">
+					<p class="scene__highlight">peace in your mind, and clarity in your path</p>
+				</div>
+				<div class="reveal-text" data-delay="2000">
+					<p class="scene__highlight">whatever you choose to build for yourself.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 6: Encouragement -->
+		<section class="scene scene--encourage" id="sceneEncourage">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__accent">I know</p>
+				</div>
+				<div class="reveal-text" data-delay="400">
+					<p class="scene__statement">you want to build things that matter.</p>
+				</div>
+				<div class="reveal-text" data-delay="800">
+					<p class="scene__highlight">
+						game development, Unreal Engine, AI/ML...
+						<br>you always had that curiosity in you
+					</p>
+				</div>
+				<div class="divider-glow"></div>
+				<div class="reveal-text" data-delay="1200">
+					<p class="scene__whisper">Don’t lose that direction.</p>
+				</div>
+				<div class="reveal-text" data-delay="1600">
+					<p class="scene__statement">
+						even if life gets unclear sometimes…
+						<br><em>keep building.</em>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 7: Reassurance -->
+		<section class="scene scene--reassure" id="sceneReassure">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__whisper">We don’t talk like before...</p>
+				</div>
+				<div class="reveal-text" data-delay="400">
+					<p class="scene__accent">but that’s just how life changes sometimes</p>
+				</div>
+				<div class="reveal-text" data-delay="800">
+					<p class="scene__statement">still, I hope you’re okay</p>
+				</div>
+				<div class="reveal-text" data-delay="1200">
+					<p class="scene__grand">and finding your way step by step</p>
+				</div>
+				<div class="reveal-text" data-delay="1600">
+					<p class="scene__highlight">
+						no pressure… no expectations
+						<br>just growth
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 8: Hope -->
+		<section class="scene scene--hope" id="sceneHope">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__whisper">I hope</p>
+				</div>
+				<div class="reveal-text" data-delay="400">
+					<p class="scene__statement">you keep moving forward</p>
+				</div>
+				<div class="reveal-text" data-delay="800">
+					<p class="scene__grand">even on days it feels slow ☀️</p>
+				</div>
+				<div class="divider-stars">✦ ✦ ✦</div>
+				<div class="reveal-text" data-delay="1200">
+					<p class="scene__highlight">build the life you actually want</p>
+				</div>
+				<div class="reveal-text" data-delay="1600">
+					<p class="scene__statement">
+						one skill, one step, one moment at a time
+					</p>
+				</div>
+				<div class="reveal-text" data-delay="2000">
+					<p class="scene__highlight">and don’t forget to live a little along the way 😊</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 9: The Unwritten Pages -->
+		<section class="scene scene--unwritten" id="sceneUnwritten">
+			<div class="scene__content">
+
+				<div class="reveal-text">
+					<p class="scene__whisper">
+						Sometimes I wonder...
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="500">
+					<p class="scene__statement">
+						where life will take us from here.
+					</p>
+				</div>
+
+				<div class="divider-glow"></div>
+
+				<div class="reveal-text" data-delay="1000">
+					<p class="scene__highlight">
+						Maybe years from now we'll still know each other.
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="1500">
+					<p class="scene__highlight">
+						Maybe life will quietly take us in different directions.
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="2000">
+					<p class="scene__statement">
+						Truth is...
+						<br>I don't know.
+					</p>
+				</div>
+
+				<div class="divider-stars">✦ ✦ ✦</div>
+
+				<div class="reveal-text" data-delay="2500">
+					<p class="scene__whisper">
+						But there is one thing I do know.
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="3000">
+					<p class="scene__grand">
+						I will always hope the best for you.
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="3500">
+					<p class="scene__highlight">
+						I hope every dream you've kept in your heart...
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="4000">
+					<p class="scene__statement">
+						every goal, every plan, every quiet wish...
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="4500">
+					<p class="scene__highlight">
+						finds its way into reality.
+					</p>
+				</div>
+
+				<div class="divider-glow"></div>
+
+				<div class="reveal-text" data-delay="5000">
+					<p class="scene__statement">
+						As long as I'm here,
+						<br>you'll always have someone silently cheering for you.
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="5500">
+					<p class="scene__highlight">
+						And even if fate writes a different story for us...
+					</p>
+				</div>
+
+				<div class="reveal-text" data-delay="6000">
+					<p class="scene__grand">
+						I will still pray that life gives you everything you've ever wished for. 🤍
+					</p>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- Section 9: THE CAKE! -->
+		<section class="scene scene--cake" id="sceneCake">
+			<div class="scene__content">
+				<div class="reveal-text">
+					<p class="scene__whisper">And now...</p>
+				</div>
+				<div class="reveal-text" data-delay="600">
+					<p class="scene__accent">make a wish 🌟</p>
+				</div>
+				<div class="cake-container" id="cakeContainer">
+					<div class="cake-glow"></div>
+					<img src="cakeon.png" alt="Birthday Cake with lit candle" class="cake-img cake-img--on" id="cakeOn">
+					<img src="cakeoff.png" alt="Birthday Cake with blown candle" class="cake-img cake-img--off"
+						id="cakeOff" style="display:none;">
+					<p class="cake-instruction" id="cakeInstruction">
+						<span class="cake-instruction__icon">🌬️</span>
+						<span>Tap the cake to blow out the candle!</span>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 10: GRAND FINALE -->
+		<section class="scene scene--finale" id="sceneFinale">
+			<div class="scene__content">
+				<div class="finale__burst" id="finaleBurst"></div>
+				<div class="reveal-text">
+					<p class="scene__whisper">From the bottom of my heart...</p>
+				</div>
+				<div class="reveal-text" data-delay="500">
+					<h2 class="finale__title">
+						<span class="finale__happy">Happy</span>
+						<span class="finale__birthday">Birthday</span>
+					</h2>
+				</div>
+				<div class="reveal-text" data-delay="1500">
+					<p class="finale__name">Nanjiba 💖</p>
+				</div>
+				<div class="reveal-text" data-delay="2000">
+					<p class="finale__tagline">Here's to you and all the amazing things coming your way! 🥳</p>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<script src="effect.js"></script>
+</body>
+
+</html>
